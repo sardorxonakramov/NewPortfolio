@@ -8,6 +8,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<link
+			rel="shortcut icon"
+			href="{% static 'images/logo.png' %}"
+			type="image/x-icon"
+		/>
 </head>
 
 
@@ -55,62 +60,64 @@
 	</article>
 
 	<!-- Work -->
-<article id="work" class="wrapper style2">
-	<div class="container">
-		<header>
-			<h2>My Education & Experience</h2>
-			<p>Backend development journey and professional background.</p>
-		</header>
+	<article id="work" class="wrapper style2">
+		<div class="container">
+			<header>
+				<h2>My Education & Experience</h2>
+				<p>Backend development journey and professional background.</p>
+			</header>
 
-		<div class="row aln-center">
+			<div class="row aln-center">
 
-			<!-- Backend Experience -->
-			<div class="col-4 col-6-medium col-12-small">
-				<section class="box style1">
-					<span class="icon solid featured fa-briefcase" style="font-size: 14px;"></span>
-					<h3>Backend Experience</h3>
-					<p>
-						Since 2024, I have been actively developing my backend skills under professional mentorship.
-						I focus on building scalable web applications, REST APIs, and business-oriented Telegram bots
-						with clean architecture and production-ready structure.
-					</p>
-				</section>
+				<!-- Backend Experience -->
+				<div class="col-4 col-6-medium col-12-small">
+					<section class="box style1">
+						<span class="icon solid featured fa-briefcase" style="font-size: 14px;"></span>
+						<h3>Backend Experience</h3>
+						<p>
+							Since 2024, I have been actively developing my backend skills under professional mentorship.
+							I focus on building scalable web applications, REST APIs, and business-oriented Telegram
+							bots
+							with clean architecture and production-ready structure.
+						</p>
+					</section>
+				</div>
+
+				<!-- Najot Ta'lim -->
+				<div class="col-4 col-6-medium col-12-small">
+					<section class="box style1">
+						<span class="icon solid featured fa-code" style="font-size: 14px;"></span>
+						<h3>Najot Ta'lim</h3>
+						<p>
+							Completed an intensive Backend Development course at Najot Ta'lim, specializing in Python
+							and Django. Gained strong practical experience in REST API development, authentication
+							systems,
+							database design, and real-world project architecture.
+						</p>
+					</section>
+				</div>
+
+				<!-- University -->
+				<div class="col-4 col-6-medium col-12-small">
+					<section class="box style1">
+						<span class="icon solid featured fa-graduation-cap" style="font-size: 14px;"></span>
+						<h3>University</h3>
+						<p>
+							Currently studying Information Systems and Technologies at university. Building a solid
+							foundation in algorithms, database systems, system analysis, and software engineering
+							principles for enterprise-level solutions.
+						</p>
+					</section>
+				</div>
+
 			</div>
 
-			<!-- Najot Ta'lim -->
-			<div class="col-4 col-6-medium col-12-small">
-				<section class="box style1">
-					<span class="icon solid featured fa-code" style="font-size: 14px;"></span>
-					<h3>Najot Ta'lim</h3>
-					<p>
-						Completed an intensive Backend Development course at Najot Ta'lim, specializing in Python
-						and Django. Gained strong practical experience in REST API development, authentication systems,
-						database design, and real-world project architecture.
-					</p>
-				</section>
-			</div>
-
-			<!-- University -->
-			<div class="col-4 col-6-medium col-12-small">
-				<section class="box style1">
-					<span class="icon solid featured fa-graduation-cap" style="font-size: 14px;"></span>
-					<h3>University</h3>
-					<p>
-						Currently studying Information Systems and Technologies at university. Building a solid
-						foundation in algorithms, database systems, system analysis, and software engineering
-						principles for enterprise-level solutions.
-					</p>
-				</section>
-			</div>
-
+			<footer>
+				<p>Interested in working together?</p>
+				<a href="#portfolio" class="button large scrolly">View My Projects</a>
+			</footer>
 		</div>
-
-		<footer>
-			<p>Interested in working together?</p>
-			<a href="#portfolio" class="button large scrolly">View My Projects</a>
-		</footer>
-	</div>
-</article>
+	</article>
 
 
 	<!-- Portfolio -->
@@ -121,25 +128,27 @@
 				<p>Proin odio consequat sapien vestibulum consequat lorem dolore feugiat.</p>
 			</header>
 			<div class="row">
+				<!-- Developer Search -->
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<h3><a href="https://sardorxon.pythonanywhere.com/uz/">Developer Search</a></h3>
+						<a href="#" class="image featured"><img src="{% static 'images/devsearch.png' %}" alt="" /></a>
+						<h3><a href="https://sardorxon.pythonanywhere.com/" target="_blank">Developer Search</a></h3>
 						<p>Barcha Dasturchilarni va loyihalarini bir joyga jamlab turuvchi platforma.</p>
 					</article>
 				</div>
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
-						<a href="#" class="image featured"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
-						<h3><a href="#">Veroeros primis</a></h3>
-						<p>Ornare nulla proin odio consequat.</p>
+						<a href="https://sardorxon1.pythonanywhere.com/" target="_blank" class="image featured"><img src="{% static 'images/store.png' %}" alt="" /></a>
+						<h3><a href="#">Online Magazen</a></h3>
+						<p>Savdo sotiq uchun kichik online magazen.</p>
 					</article>
 				</div>
+				<!-- Online Store -->
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-						<h3><a href="#">Lorem ipsum</a></h3>
-						<p>Ornare nulla proin odio consequat.</p>
+						<a href="#" class="image featured"><img src="{% static 'images/shop.png' %}" alt="" /></a>
+						<h3><a href="https://sardorxonakramov.pythonanywhere.com/" target="_blank">Online do'kon</a></h3>
+						<p>Kichik turdagi mahsulotlarni sotish uchun mo'ljallangan online magazen.</p>
 					</article>
 				</div>
 				<div class="col-4 col-6-medium col-12-small">
@@ -207,14 +216,15 @@
 					<hr />
 					<h3>Find me on ...</h3>
 					<ul class="social">
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands fa-google"><span class="label">Google</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-						<li><a href="#" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+						<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li> -->
+						<li><a href="https://www.linkedin.com/in/sardorxon-akramov/" target="_blank" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="mailto:sardorxonakramov01@gmail.com" target="_blank" class="icon brands fa-google"><span class="label">Google</span></a></li>
+						<li><a href="https://github.com/sardorxonakramov" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://t.me/Sardorxon_Dev?text=Salom%20men%20saytingiz%20orqali%20yozyapman" target="_blank" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
+						<li><a href="https://wa.me/998911888990?text=Salom%20men%20saytingiz%20orqali%20yozyapman" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+						
 						<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
