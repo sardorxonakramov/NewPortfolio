@@ -8,7 +8,6 @@ class MessageForMe(models.Model):
     fullname = models.CharField(max_length=40, verbose_name="Full Name")
     phone = models.CharField(
         max_length=13,
-        unique=True,
         validators=[
             RegexValidator(
                 regex=r"^\+998\d{9}$",

@@ -8,11 +8,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-		<link
-			rel="shortcut icon"
-			href="{% static 'images/logo.png' %}"
-			type="image/x-icon"
-		/>
+	<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
 </head>
 
 
@@ -124,8 +120,9 @@
 	<article id="portfolio" class="wrapper style3">
 		<div class="container">
 			<header>
-				<h2>Here’s some stuff I made recently.</h2>
-				<p>Proin odio consequat sapien vestibulum consequat lorem dolore feugiat.</p>
+				<h2>My Recent Projects</h2>
+				<p>Real-world web applications built with Django, REST APIs and modern backend architecture.</p>
+
 			</header>
 			<div class="row">
 				<!-- Developer Search -->
@@ -138,8 +135,8 @@
 				</div>
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
-						<a href="https://sardorxon1.pythonanywhere.com/" target="_blank" class="image featured"><img src="{% static 'images/store.png' %}" alt="" /></a>
-						<h3><a href="#">Online Magazen</a></h3>
+						<a href="#" class="image featured"><img src="{% static 'images/store.png' %}" alt="" /></a>
+						<h3><a href="https://sardorxon1.pythonanywhere.com/" target="_blank">Online Magazen</a></h3>
 						<p>Savdo sotiq uchun kichik online magazen.</p>
 					</article>
 				</div>
@@ -147,11 +144,12 @@
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
 						<a href="#" class="image featured"><img src="{% static 'images/shop.png' %}" alt="" /></a>
-						<h3><a href="https://sardorxonakramov.pythonanywhere.com/" target="_blank">Online do'kon</a></h3>
+						<h3><a href="https://sardorxonakramov.pythonanywhere.com/" target="_blank">Online do'kon</a>
+						</h3>
 						<p>Kichik turdagi mahsulotlarni sotish uchun mo'ljallangan online magazen.</p>
 					</article>
 				</div>
-				<div class="col-4 col-6-medium col-12-small">
+				<!-- <div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
 						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
 						<h3><a href="#">Tempus dolore</a></h3>
@@ -171,10 +169,10 @@
 						<h3><a href="#">Sed amet ornare</a></h3>
 						<p>Ornare nulla proin odio consequat.</p>
 					</article>
-				</div>
+				</div> -->
 			</div>
 			<footer>
-				<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
+				<p>Interested in my work? Feel free to reach out and discuss a project or collaboration.</p>
 				<a href="#contact" class="button large scrolly">Get in touch with me</a>
 			</footer>
 		</div>
@@ -184,34 +182,129 @@
 	<article id="contact" class="wrapper style4">
 		<div class="container medium">
 			<header>
-				<h2>Have me make stuff for you.</h2>
-				<p>Ornare nulla proin odio consequat sapien vestibulum ipsum.</p>
+				<h2>Get in Touch</h2>
+				<p>If you have a project, proposal, or question, feel free to write to me. I’ll be happy to get back to
+					you!</p>
 			</header>
 			<div class="row">
 				<div class="col-12">
-					<form method="post" action="#">
+
+					<form id="contactForm" method="post">
+						{% csrf_token %}
 						<div class="row">
 							<div class="col-6 col-12-small">
-								<input type="text" name="name" id="name" placeholder="Name" />
+								<input type="text" name="fullname" id="name" placeholder="Full Name" required />
 							</div>
+
 							<div class="col-6 col-12-small">
-								<input type="text" name="email" id="email" placeholder="Email" />
+								<input type="text" name="phone" id="email" placeholder="Phone Number" required
+									pattern="^\+998\d{9}$" title="+998901234567 formatda kiriting" />
 							</div>
+
 							<div class="col-12">
 								<input type="text" name="subject" id="subject" placeholder="Subject" />
 							</div>
+
 							<div class="col-12">
-								<textarea name="message" id="message" placeholder="Message"></textarea>
+								<textarea name="message" id="message" placeholder="Message" required></textarea>
 							</div>
+
 							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-									<li><input type="reset" value="Clear Form" class="alt" /></li>
+									<li>
+										<input type="submit" id="submitBtn" value="Send Message" />
+									</li>
+									<li>
+										<input type="reset" value="Clear Form" class="alt" />
+									</li>
 								</ul>
 							</div>
 						</div>
 					</form>
+
+					<!-- Spinner -->
+					<div id="spinner" style="display:none; text-align:center; margin-top:15px;">
+						<div class="loader"></div>
+					</div>
+
+					<!-- Xabar chiqadigan joy -->
+					<div id="msg-box" style="margin-top:15px; font-weight:600;"></div>
+
 				</div>
+
+				<style>
+					.loader {
+						border: 4px solid #f3f3f3;
+						border-top: 4px solid #3498db;
+						border-radius: 50%;
+						width: 30px;
+						height: 30px;
+						animation: spin 1s linear infinite;
+						margin: auto;
+					}
+
+					@keyframes spin {
+						0% {
+							transform: rotate(0deg);
+						}
+
+						100% {
+							transform: rotate(360deg);
+						}
+					}
+				</style>
+
+				<script>
+					document.getElementById('contactForm').addEventListener('submit', function (e) {
+						e.preventDefault();
+
+						const form = this;
+						const spinner = document.getElementById('spinner');
+						const msgBox = document.getElementById('msg-box');
+						const submitBtn = document.getElementById('submitBtn');
+
+						msgBox.innerHTML = '';
+						spinner.style.display = 'block';
+						submitBtn.disabled = true;
+
+						const formData = new FormData(form);
+
+						fetch("", {
+							method: "POST",
+							headers: {
+								"X-Requested-With": "XMLHttpRequest"
+							},
+							body: formData
+						})
+							.then(response => response.json())
+							.then(data => {
+								spinner.style.display = 'none';
+								submitBtn.disabled = false;
+
+								if (data.status === 'success') {
+									msgBox.style.color = 'green';
+									form.reset();
+								} else {
+									msgBox.style.color = 'red';
+								}
+
+								msgBox.innerHTML = data.message;
+
+								setTimeout(() => {
+									msgBox.innerHTML = '';
+								}, 5000);
+							})
+							.catch(() => {
+								spinner.style.display = 'none';
+								submitBtn.disabled = false;
+								msgBox.style.color = 'red';
+								msgBox.innerHTML = "Server xatoligi!";
+								setTimeout(() => {
+									msgBox.innerHTML = '';
+								}, 5000);
+							});
+					});
+				</script>
 				<div class="col-12">
 					<hr />
 					<h3>Find me on ...</h3>
@@ -219,12 +312,41 @@
 						<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li> -->
-						<li><a href="https://www.linkedin.com/in/sardorxon-akramov/" target="_blank" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="mailto:sardorxonakramov01@gmail.com" target="_blank" class="icon brands fa-google"><span class="label">Google</span></a></li>
-						<li><a href="https://github.com/sardorxonakramov" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://t.me/Sardorxon_Dev?text=Salom%20men%20saytingiz%20orqali%20yozyapman" target="_blank" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
-						<li><a href="https://wa.me/998911888990?text=Salom%20men%20saytingiz%20orqali%20yozyapman" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-						
+						<li>
+							<a href="https://www.linkedin.com/in/sardorxon-akramov" target="_blank"
+								rel="noopener noreferrer" class="icon brands fa-linkedin-in">
+								<span class="label">LinkedIn</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="mailto:sardorxonakramov01@gmail.com?subject=Taklif&body={{ SOCIAL_TEXT }}"
+								class=" icon solid fa-envelope">
+								<span class="label">Email</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="https://github.com/sardorxonakramov" target="_blank" rel="noopener noreferrer"
+								class="icon brands fa-github">
+								<span class="label">Github</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="https://t.me/Sardorxon_Dev?text={{ SOCIAL_TEXT }}" target="_blank"
+								rel="noopener noreferrer" class="icon brands fa-telegram">
+								<span class="label">Telegram</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="https://wa.me/998911888990?text={{ SOCIAL_TEXT }}" target="_blank"
+								rel="noopener noreferrer" class="icon brands fa-whatsapp">
+								<span class="label">WhatsApp</span>
+							</a>
+						</li>
+
 						<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li> -->
 						<!-- <li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
