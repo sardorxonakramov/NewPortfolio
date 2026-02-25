@@ -17,3 +17,5 @@ env/
 # Mac
 .DS_Store
 .portfolio.json
+migrations/
+migrations/*
