@@ -24,3 +24,8 @@ class MessageForMe(models.Model):
     )
 
     message = models.TextField(verbose_name="Xabar matni: ")
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Message"
+        verbose_name_plural = "Messages"
